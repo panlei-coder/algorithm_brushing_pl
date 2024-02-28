@@ -25,6 +25,7 @@ ListNode* RemoveListElement(ListNode* head, int val) {
                 prev->next = next->next;
                 next = next->next;
                 delete temp;
+                temp = nullptr;
             }
         } else {
             next = next->next;
