@@ -9,28 +9,38 @@ typedef struct ListNode {
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 }ListNode;
 
-ListNode* ReverseList(ListNode* head) {
-    if (!head) {
+ListNode* PairwiseSwapNodes(ListNode* head) {
+    if (!head || !head->next) {
         return head;
     }
 
-    ListNode* p = head;
-    ListNode* new_head = nullptr;
+    ListNode* left = head;
+    ListNode* right = head->next;
     ListNode* temp = nullptr;
-    while (p) {
-        if (!new_head) {
-            new_head = p;
-            p = p->next;
-            new_head->next = nullptr;
+    ListNode* prev = nullptr;
+    head = nullptr;
+    while (left && right) {
+        temp = right->next;
+        left->next = right->next;
+        right->next = left;
+        if (prev) {
+            prev->next = right;
+        }
+
+        if (!head) {
+            head = right;
+        }
+
+        prev = left;
+        left = temp;
+        if (temp) {
+            right = temp->next;
         } else {
-            temp = p->next;
-            p->next = new_head;
-            new_head = p;
-            p = temp;
+            right = nullptr;
         }
     }
 
-    return new_head;
+    return head;
 }
 
 int main() {
@@ -50,7 +60,7 @@ int main() {
         }
     }
 
-    auto new_head = ReverseList(head);
+    auto new_head = PairwiseSwapNodes(head);
     while (new_head) {
         std::cout << new_head->val << " ";
         ListNode* temp = new_head;
