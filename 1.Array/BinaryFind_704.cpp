@@ -24,7 +24,7 @@ int main() {
     std::vector<int> nums;
     int target = 0;
 
-    std::cout << "输入nums：" << std::endl;
+    std::cout << "输入数组nums：" << std::endl;
     int temp = 0;
     while (std::cin >> temp && temp != -1) {
         nums.push_back(temp);
