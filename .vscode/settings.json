@@ -50,6 +50,7 @@
         "typeinfo": "cpp",
         "cstring": "cpp",
         "list": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "stack": "cpp"
     }
 }
